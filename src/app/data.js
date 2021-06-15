@@ -22,7 +22,7 @@ const data = {
 
 
             //first search transactions
-            matchingTransactions = transactions.filter((item) => {
+            matchingTransactions = transactions.filter(item => {
                 return item.sku === sku
             });
 
@@ -34,13 +34,29 @@ const data = {
                 reject(new Error("No transactions found for given SKU"));
             }
 
-            //look over stocks and add any relevant values to the total
+            //loop over matching transactions and calculate total
             stock.forEach((item) => {
                 if(item.sku === sku
                     && item.stock
                     && typeof(item.stock) === 'number') {
+                    
+                    let totalStockQty = 0;
+                    // loop over the matching transactions and get the total quantity of 
+                    // stock.
+                    matchingTransactions.forEach(matchingTransactionItem => {
+                        switch (matchingTransactionItem.type) {
+                            case "order":
+                                totalStockQty += matchingTransactionItem.qty;
+                            break;
+                            case "refund":
+                                totalStockQty -= matchingTransactionItem.qty;
+                            break;
+                        }
+                    });
 
-                    stockTotal += item.stock;
+                    //calculate the stock total
+                    stockTotal += item.stock * totalStockQty;
+
                 }
             });
 
