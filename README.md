@@ -6,12 +6,14 @@ I also wrote another test function (in data.js) that searches through the transa
 
 
 To install:
+
 1- clone repository to hosting environment (tested using XAMMP)
 
 2- in a terminal opened in the root folder type:
-    npm i
-    npm run start
 
- This will install all node modules and run webpack to minify the files down into a file called skusearch.bundle.js in dist folder.
+npm i
+npm run start
+
+This will install all node modules and run webpack to minify the files down into a file called skusearch.bundle.js in dist folder.
 
 3- browse to the location where the files have been hosted
