@@ -17,3 +17,11 @@ npm run start
 This will install all node modules and run webpack to minify the files down into a file called skusearch.bundle.js in dist folder.
 
 3- browse to the location where the files have been hosted
+
+
+To run jest test
+npm run test
+
+OR
+
+npx jest

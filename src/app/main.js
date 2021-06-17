@@ -16,23 +16,23 @@ export default (props) => {
     };
 
     //call the main search stock function
-    const callSearchStock = async (e) => {
+    const callSearchStock = (e) => {
         data.searchStockBySku(skuSearch)
-        .then(result => {
-            setStockTotal(result.qty);
-            setFoundSku(result.sku);
-        })
-        .catch(err => {
-            setStockTotal(null);
-            alert(err.message || "An unexpected error occured");
-        });
+            .then(result => {
+                setStockTotal(result.qty);
+                setFoundSku(result.sku);
+            })
+            .catch(err => {
+                setStockTotal(null);
+                alert(err.message || "An unexpected error occured");
+            });
         
     };
 
     //extra method for test purposes
     //calls an extra method to find an sku with no stock
     //then calls the main search stock function
-    const callAutoSearchMissingStock = async (e) => {
+    const callAutoSearchMissingStock = (e) => {
         data.findSkuWithNoStock()
         .then(result => {
             data.searchStockBySku(result)
