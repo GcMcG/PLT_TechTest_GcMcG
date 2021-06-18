@@ -1,5 +1,6 @@
 import stock from '../../../json/stock.json';
 import transactions from '../../../json/transactions.json';
+import TRANSACTION_TYPE from './enums/transactions.js';
 
 // sku - string (sku id to search for)
 //
@@ -52,10 +53,10 @@ export default (sku) => {
 
 
                     switch (matchingTransactionItem.type) {
-                        case "order":
+                        case TRANSACTION_TYPE.ORDER:
                             totalStockQty += matchingTransactionItem.qty;
                         break;
-                        case "refund":
+                        case TRANSACTION_TYPE.REFUND:
                             totalStockQty -= matchingTransactionItem.qty;
                         break;
                     }
